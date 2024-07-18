@@ -77,6 +77,7 @@ router.patch("/:id", async (req, res, next) => {
             );
         } else {
             // If un-paying: sets paid_date to null
+
             results = await db.query(
                 "UPDATE invoices SET amt=$1, paid=$2, paid_date=$3 WHERE id=$4 RETURNING id, comp_code, amt, paid, add_date, paid_date",
                 [amt, paid, null, id]
