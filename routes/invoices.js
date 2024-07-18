@@ -33,8 +33,8 @@ router.get("/:id", async (req, res, next) => {
         );
 
         return res.json({
-            invoice: invoiceResults.rows,
-            company: companyResults.rows,
+            invoice: invoiceResults.rows[0],
+            company: companyResults.rows[0],
         });
     } catch (e) {
         return next(e);
@@ -50,11 +50,12 @@ router.post("/", async (req, res, next) => {
         );
         return res.status(201).json({ invoice: results.rows[0] });
     } catch (e) {
+        console.error(e);
         return next(e);
     }
 });
 
-router.put("/:id", async (req, res, next) => {
+router.patch("/:id", async (req, res, next) => {
     try {
         const { id } = req.params;
         const { amt } = req.body;

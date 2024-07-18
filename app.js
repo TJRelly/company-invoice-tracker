@@ -7,8 +7,11 @@ const ExpressError = require("./expressError");
 
 app.use(express.json());
 
-const uRoutes = require("./routes/companies");
-app.use("/companies", uRoutes);
+const companyRoutes = require("./routes/companies");
+const invoiceRoutes = require("./routes/invoices");
+
+app.use("/companies", companyRoutes);
+app.use("/invoices", invoiceRoutes);
 
 /** 404 handler */
 
@@ -20,9 +23,9 @@ app.use(function (req, res, next) {
 /** general error handler */
 
 app.use((err, req, res, next) => {
-  const status = err.status || 500;
-  const message = err.message || "Internal Server Error";
-  res.status(status).json({ error: { message, status } });
+    const status = err.status || 500;
+    const message = err.message || "Internal Server Error";
+    res.status(status).json({ error: { message, status } });
 });
 
 module.exports = app;
