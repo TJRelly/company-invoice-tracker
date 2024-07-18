@@ -22,7 +22,8 @@ CREATE TABLE invoices (
 
 INSERT INTO companies
   VALUES ('apple', 'Apple Computer', 'Maker of OSX.'),
-         ('ibm', 'IBM', 'Big blue.'), ('tesla','Tesla','self driving cars');
+         ('ibm', 'IBM', 'Big blue.'), 
+         ('tesla','Tesla','self driving cars');
 
 INSERT INTO invoices (comp_Code, amt, paid, paid_date)
   VALUES ('apple', 100, false, null),
